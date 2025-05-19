@@ -1,44 +1,137 @@
-# Bare Context Network
-This project is a starter template for a generic context-network (more info at https://jwynia.github.io/context-networks/). It can be used as a collaboration context manager for a wide range of projects. They are used for software projects, writing projects of all kinds (fiction, non-fiction, marketing, technical, etc.), building knowledge bases, managing research and analysis and more.
+# UV Python Context Network
 
-This particular template repository is generic so that it isn't aimed at any one of those project types. Other templates exist (or will soon) that are aimed at common project types. Look at those and use one if it seems like a good match. But, if not, use this one.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python: 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3120/)
+[![Package Manager: UV](https://img.shields.io/badge/Package%20Manager-UV-blueviolet)](https://github.com/astral-sh/uv)
+
+This project is a specialized context-network template for Python development using the modern UV package manager. It provides a structured approach to documenting and managing Python projects that exclusively use UV for package and environment management.
+
+Built on the foundation of context networks (more info at https://jwynia.github.io/context-networks/), this template focuses specifically on the technical aspects and constraints of Python development with UV, a high-performance package manager written in Rust that serves as a drop-in replacement for traditional Python tools like pip, pip-tools, and virtualenv.
+
+## Key Features
+
+- **UV-Exclusive Approach**: This template enforces a UV-only approach to Python development, deliberately blocking access to traditional Python tools to ensure consistency and prevent confusion.
+- **DevContainer Configuration**: Includes a custom DevContainer setup that creates an isolated development environment with UV pre-installed.
+- **Modern Python Structure**: Follows modern Python project structure best practices, including src-layout and pyproject.toml configuration.
+- **Comprehensive Documentation**: The context network contains detailed documentation on UV commands, workflows, and best practices.
+- **GitHub Integration**: Includes issue templates, PR templates, and CI workflow configuration.
 
 ## Getting Started
-Context networks are intended to be used with an LLM agent that has file access to all of the files in the project folder. For people in software development professions, that can be agents they write. But, for most people, the easiest access to such agents is via IDE coding tools.
 
-Set up the prompts (see below) and start a planning conversation and describe your project, your goals, your constraints, etc. When the plan looks good, let it enhance the context network. Then start with real tasks for the project.
+1. **Use this template**:
+   - Click the "Use this template" button on GitHub to create a new repository based on this template
+   - Or clone the repository directly:
+   ```bash
+   git clone https://github.com/yourusername/uv-python-context-network.git my-project
+   cd my-project
+   ```
 
-## Cost
-Because context networks are a relatively cutting-edge approach to collaboration with LLM AI agents, these tools do cost money and some of the best of them can cost more money than you may be expecting. The costs on such things are dropping and much of what we're doing with context networks is figuring out the ways to work that will be more widespread next year and beyond, when these costs drop. If these tools are too expensive for your budget, that probably means you need to wait a bit.
+2. **Customize the template**:
+   - Update the project name, description, and author in `pyproject.toml`
+   - Rename the package directory in `src/package_name` to your actual package name
+   - Update imports in test files to match your package name
+   - Modify the LICENSE file with your name and year
+   - Update this README.md with your project-specific information
 
-## Tools
-Cursor (https://www.cursor.com/) is an all-in-one that comes with LLM chat and an agent that can act on the files.
+3. **Open in VS Code with Dev Containers**:
+   - Install the Dev Containers extension if not already installed
+   - Open the project folder
+   - When prompted, click "Reopen in Container"
+   - The container will build and set up the UV environment automatically
 
-Cursor is built on VSCode (https://code.visualstudio.com/), which is a more generic code/text editor that can have plugins added. One we use a lot with context networks is Cline (https://cline.bot/). Cline's agent can be pointed at a wide range of LLM APIs that you use your own keys/billing for or their own management of that. A popular solution is to use OpenRouter (https://openrouter.ai/) which lets you use most of the LLM models available today.
+4. **Start working with an LLM agent**:
+   - Use an LLM agent that has file access to all files in the project folder
+   - The context network will guide the agent in understanding the UV-specific constraints and workflows
+   - Start with planning conversations to describe your specific Python project goals and constraints
 
-## Patterns
+## Project Structure
+
+```
+uv-python-context-network/
+├── .context-network.md        # Context network discovery file
+├── .devcontainer/             # Development container configuration
+├── .github/                   # GitHub templates and workflows
+├── context-network/           # Documentation and planning materials
+├── src/                       # Source code (using src-layout)
+│   └── package_name/          # Example package (rename this)
+├── tests/                     # Test files
+├── .gitignore                 # Git ignore patterns
+├── LICENSE                    # MIT License
+├── pyproject.toml             # Project configuration
+└── README.md                  # This file
+```
+
+## UV Python Development
+
+This template enforces the use of UV for all Python operations:
+
+- **Creating environments**: `uv venv`
+- **Installing packages**: `uv pip install`
+- **Running Python code**: `uv run script.py`
+- **Managing dependencies**: `uv pip compile` and `uv pip sync`
+
+The DevContainer configuration deliberately blocks access to traditional Python tools (`pip`, `python`, etc.) to ensure consistency and prevent confusion, particularly when working with AI agents.
+
+For detailed information about UV commands and workflows, see the documentation in the context network:
+- `context-network/elements/uv-python/overview.md`
+- `context-network/elements/uv-python/commands.md`
+- `context-network/elements/uv-python/workflow.md`
+
+## Example Usage
+
+Run the example code:
+
+```bash
+uv run -m package_name.example
+```
+
+Run the tests:
+
+```bash
+uv run -m pytest
+```
+
+## Tools for Working with this Template
+
+For the best experience with this template, we recommend:
+
+- **VS Code** (https://code.visualstudio.com/) with the Dev Containers extension
+- **Cursor** (https://www.cursor.com/) - An AI-powered code editor built on VS Code
+- **Cline** (https://cline.bot/) - A VS Code extension that provides AI agent capabilities
+
+These tools can interact with the context network to understand the UV-specific constraints and workflows.
+
+## Working with the Context Network
+
 ### Prompts
-For whatever agent you use, you need to include instructions in the system prompt or custom instructions that tell it about context networks and how to navigate them. The prompt in /inbox/custom-instructions-prompt.md is the one a lot of people are using for Cline with Claude Sonnet as the model.
+For whatever agent you use, include instructions in the system prompt or custom instructions that tell it about context networks and how to navigate them. The prompt in `/inbox/custom-instructions-prompt.md` provides a good starting point.
 
-Add it in either your agent's configuration screen or via it's file-based prompt management system.
+### Plan/Act Workflow
+When working with AI agents:
 
-### Plan/Act and Specific Scope
-Cline and many other agents have multiple modes, usually offering one that lets you have a conversation with it separate from it taking action on files. In Cline, that's "Plan". In that mode, it won't make any changes to your files.
+1. **Plan Mode**: Start in Plan mode to discuss your Python project requirements and constraints
+2. **Review UV Documentation**: Have the agent review the UV documentation in the context network
+3. **Develop Specific Plans**: Create detailed plans for implementing your Python project with UV
+4. **Act Mode**: Switch to Act mode only when you have a specific, well-defined task
+5. **Monitor and Guide**: Pay attention to the agent's actions, especially ensuring it uses UV commands correctly
 
-Use that mode aggressively to get to a specific plan for what will happen when you toggle to act. That plan should have a clear definition of what "done" will look like, should be as close to a single action as possible.
+### UV-Specific Best Practices
 
-That often means that the action is to detail out a list of tasks that you'll actually have the agent do separately, one at a time. The "do one thing" can mean break the existing scope down another level to get to a more detailed plan. 
-
-Basically, the more specific the action that Act mode or its equivalent is given, the better job it will do at managing token budget, at not volunteering to do a bunch of extra things,  and the more likely it does something you've already had a chance to approve.
-
-### Monitor and Interrupt
-The more you actually read and monitor what your agent is doing for anything that you disagree with or sounds incorrect and step in to interrupt, the better your context network will mature. Like hiring a new assistant, where for the first few weeks, you have to tell them your preferences and ways you want things done, it pays off over the long haul.
-
-Interrupt, flip to Plan mode, and ask things like:
-
-* How can we document into the context network a way of working so we don't repeat (the problem/misunderstanding above)?
-* I'd really prefer we always write out a plan with tasks before doing things ad hoc. How can we clarify what's in the context network to make that our process going forward?
-
+1. **Always use pyproject.toml**: Keep all project configuration in pyproject.toml
+2. **Use lockfiles**: Generate and commit lockfiles for reproducible builds
+3. **Run through UV**: Always run Python code through UV (`uv run`)
+4. **Follow src-layout**: Keep all package code in the `src/` directory
+5. **Document UV usage**: Include clear instructions for UV commands in your project
 
 ### Retrospective
-At the end of tasks and periodically AS a new task, ask how things could be improved. For task end, "What from this conversation and task should be documented in the context network?" For periodic retrospectives, "What have we learned in this project that could be used to improve the context network for our efforts going forward?"
+Periodically review and improve the context network:
+- "What have we learned about UV that should be documented in the context network?"
+- "How can we improve our UV workflows based on our experience?"
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
